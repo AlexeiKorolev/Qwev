@@ -1,0 +1,132 @@
+{
+  "model": "Qwen/Qwen3-VL-2B-Instruct",
+  "revision": "main",
+  "local_files_only": true,
+  "dtype": "bfloat16",
+  "attention_implementation": "sdpa",
+  "device": "cuda:0",
+  "warmup": 2,
+  "repeats": 30,
+  "seed": 42,
+  "modes": [
+    "prefill",
+    "head",
+    "one_token",
+    "json"
+  ],
+  "max_new_tokens": 32,
+  "cases": [
+    {
+      "id": "grid_short_low",
+      "image": "../assets/grid.png",
+      "prompt": "In this grid scene, the agent faces right and the yellow key is the target. Choose the next action toward the key. A:left B:right C:forward D:pickup E:drop F:toggle G:done. Answer with one letter.",
+      "min_pixels": 65536,
+      "max_pixels": 131072,
+      "json_prompt": "In this grid scene, the agent faces right and the yellow key is the target. Choose the next action toward the key. A:left B:right C:forward D:pickup E:drop F:toggle G:done. Return only a JSON object with exactly one key named \"action\" and a single-letter A-G value. Do not put text outside the object."
+    },
+    {
+      "id": "grid_short_mid",
+      "image": "../assets/grid.png",
+      "prompt": "In this grid scene, the agent faces right and the yellow key is the target. Choose the next action toward the key. A:left B:right C:forward D:pickup E:drop F:toggle G:done. Answer with one letter.",
+      "min_pixels": 65536,
+      "max_pixels": 393216,
+      "json_prompt": "In this grid scene, the agent faces right and the yellow key is the target. Choose the next action toward the key. A:left B:right C:forward D:pickup E:drop F:toggle G:done. Return only a JSON object with exactly one key named \"action\" and a single-letter A-G value. Do not put text outside the object."
+    },
+    {
+      "id": "grid_short_high",
+      "image": "../assets/grid.png",
+      "prompt": "In this grid scene, the agent faces right and the yellow key is the target. Choose the next action toward the key. A:left B:right C:forward D:pickup E:drop F:toggle G:done. Answer with one letter.",
+      "min_pixels": 65536,
+      "max_pixels": 786432,
+      "json_prompt": "In this grid scene, the agent faces right and the yellow key is the target. Choose the next action toward the key. A:left B:right C:forward D:pickup E:drop F:toggle G:done. Return only a JSON object with exactly one key named \"action\" and a single-letter A-G value. Do not put text outside the object."
+    },
+    {
+      "id": "grid_packet_low",
+      "image": "../assets/grid.png",
+      "prompt": "You control an agent in a small grid world. Inspect the agent position and facing direction, the yellow key, and any obstacles. The key is the current target. Choose exactly one immediate action toward the key; do not describe a plan or add commentary. Use this action dictionary: A means turn left, B means turn right, C means move forward, D means pickup, E means drop, F means toggle, and G means done. Move legally from the visible state. If the key occupies the cell directly in front of the agent, choose pickup. Otherwise navigate toward a cell next to the key, avoiding walls and objects. This is one decision at the current step, not a sequence of future actions. Respond with one action letter only.",
+      "min_pixels": 65536,
+      "max_pixels": 131072,
+      "json_prompt": "You control an agent in a small grid world. Inspect the agent position and facing direction, the yellow key, and any obstacles. The key is the current target. Choose exactly one immediate action toward the key; do not describe a plan or add commentary. Use this action dictionary: A means turn left, B means turn right, C means move forward, D means pickup, E means drop, F means toggle, and G means done. Move legally from the visible state. If the key occupies the cell directly in front of the agent, choose pickup. Otherwise navigate toward a cell next to the key, avoiding walls and objects. This is one decision at the current step, not a sequence of future actions. Return only a JSON object with exactly one key named \"action\" and a single-letter A-G value. Do not put text outside the object."
+    },
+    {
+      "id": "grid_packet_mid",
+      "image": "../assets/grid.png",
+      "prompt": "You control an agent in a small grid world. Inspect the agent position and facing direction, the yellow key, and any obstacles. The key is the current target. Choose exactly one immediate action toward the key; do not describe a plan or add commentary. Use this action dictionary: A means turn left, B means turn right, C means move forward, D means pickup, E means drop, F means toggle, and G means done. Move legally from the visible state. If the key occupies the cell directly in front of the agent, choose pickup. Otherwise navigate toward a cell next to the key, avoiding walls and objects. This is one decision at the current step, not a sequence of future actions. Respond with one action letter only.",
+      "min_pixels": 65536,
+      "max_pixels": 393216,
+      "json_prompt": "You control an agent in a small grid world. Inspect the agent position and facing direction, the yellow key, and any obstacles. The key is the current target. Choose exactly one immediate action toward the key; do not describe a plan or add commentary. Use this action dictionary: A means turn left, B means turn right, C means move forward, D means pickup, E means drop, F means toggle, and G means done. Move legally from the visible state. If the key occupies the cell directly in front of the agent, choose pickup. Otherwise navigate toward a cell next to the key, avoiding walls and objects. This is one decision at the current step, not a sequence of future actions. Return only a JSON object with exactly one key named \"action\" and a single-letter A-G value. Do not put text outside the object."
+    },
+    {
+      "id": "grid_packet_high",
+      "image": "../assets/grid.png",
+      "prompt": "You control an agent in a small grid world. Inspect the agent position and facing direction, the yellow key, and any obstacles. The key is the current target. Choose exactly one immediate action toward the key; do not describe a plan or add commentary. Use this action dictionary: A means turn left, B means turn right, C means move forward, D means pickup, E means drop, F means toggle, and G means done. Move legally from the visible state. If the key occupies the cell directly in front of the agent, choose pickup. Otherwise navigate toward a cell next to the key, avoiding walls and objects. This is one decision at the current step, not a sequence of future actions. Respond with one action letter only.",
+      "min_pixels": 65536,
+      "max_pixels": 786432,
+      "json_prompt": "You control an agent in a small grid world. Inspect the agent position and facing direction, the yellow key, and any obstacles. The key is the current target. Choose exactly one immediate action toward the key; do not describe a plan or add commentary. Use this action dictionary: A means turn left, B means turn right, C means move forward, D means pickup, E means drop, F means toggle, and G means done. Move legally from the visible state. If the key occupies the cell directly in front of the agent, choose pickup. Otherwise navigate toward a cell next to the key, avoiding walls and objects. This is one decision at the current step, not a sequence of future actions. Return only a JSON object with exactly one key named \"action\" and a single-letter A-G value. Do not put text outside the object."
+    },
+    {
+      "id": "gui_short_low",
+      "image": "../assets/gui.png",
+      "prompt": "Inspect this settings GUI. To apply the pending changes, choose the next action. A:click General B:click Display C:click Audio D:click Controls E:click Apply F:toggle fullscreen G:wait. Answer with one letter.",
+      "min_pixels": 65536,
+      "max_pixels": 131072,
+      "json_prompt": "Inspect this settings GUI. To apply the pending changes, choose the next action. A:click General B:click Display C:click Audio D:click Controls E:click Apply F:toggle fullscreen G:wait. Return only a JSON object with exactly one key named \"action\" and a single-letter A-G value. Do not put text outside the object."
+    },
+    {
+      "id": "gui_short_mid",
+      "image": "../assets/gui.png",
+      "prompt": "Inspect this settings GUI. To apply the pending changes, choose the next action. A:click General B:click Display C:click Audio D:click Controls E:click Apply F:toggle fullscreen G:wait. Answer with one letter.",
+      "min_pixels": 65536,
+      "max_pixels": 393216,
+      "json_prompt": "Inspect this settings GUI. To apply the pending changes, choose the next action. A:click General B:click Display C:click Audio D:click Controls E:click Apply F:toggle fullscreen G:wait. Return only a JSON object with exactly one key named \"action\" and a single-letter A-G value. Do not put text outside the object."
+    },
+    {
+      "id": "gui_short_high",
+      "image": "../assets/gui.png",
+      "prompt": "Inspect this settings GUI. To apply the pending changes, choose the next action. A:click General B:click Display C:click Audio D:click Controls E:click Apply F:toggle fullscreen G:wait. Answer with one letter.",
+      "min_pixels": 65536,
+      "max_pixels": 786432,
+      "json_prompt": "Inspect this settings GUI. To apply the pending changes, choose the next action. A:click General B:click Display C:click Audio D:click Controls E:click Apply F:toggle fullscreen G:wait. Return only a JSON object with exactly one key named \"action\" and a single-letter A-G value. Do not put text outside the object."
+    },
+    {
+      "id": "gui_packet_low",
+      "image": "../assets/gui.png",
+      "prompt": "You are reading one screenshot from a settings interface. Inspect the visible tabs, controls, and buttons. The goal is to apply the pending settings changes. Choose one immediate action based only on the screenshot; do not invent unseen state or describe a multistep plan. Use this GUI action dictionary: A means click General, B means click Display, C means click Audio, D means click Controls, E means click Apply, F means toggle fullscreen, and G means wait. Make a single decision for the current observation. Output exactly one action letter, with no explanation, punctuation, or alternatives.",
+      "min_pixels": 65536,
+      "max_pixels": 131072,
+      "json_prompt": "You are reading one screenshot from a settings interface. Inspect the visible tabs, controls, and buttons. The goal is to apply the pending settings changes. Choose one immediate action based only on the screenshot; do not invent unseen state or describe a multistep plan. Use this GUI action dictionary: A means click General, B means click Display, C means click Audio, D means click Controls, E means click Apply, F means toggle fullscreen, and G means wait. Make a single decision for the current observation. Return only a JSON object with exactly one key named \"action\" and a single-letter A-G value. Do not put text outside the object."
+    },
+    {
+      "id": "gui_packet_mid",
+      "image": "../assets/gui.png",
+      "prompt": "You are reading one screenshot from a settings interface. Inspect the visible tabs, controls, and buttons. The goal is to apply the pending settings changes. Choose one immediate action based only on the screenshot; do not invent unseen state or describe a multistep plan. Use this GUI action dictionary: A means click General, B means click Display, C means click Audio, D means click Controls, E means click Apply, F means toggle fullscreen, and G means wait. Make a single decision for the current observation. Output exactly one action letter, with no explanation, punctuation, or alternatives.",
+      "min_pixels": 65536,
+      "max_pixels": 393216,
+      "json_prompt": "You are reading one screenshot from a settings interface. Inspect the visible tabs, controls, and buttons. The goal is to apply the pending settings changes. Choose one immediate action based only on the screenshot; do not invent unseen state or describe a multistep plan. Use this GUI action dictionary: A means click General, B means click Display, C means click Audio, D means click Controls, E means click Apply, F means toggle fullscreen, and G means wait. Make a single decision for the current observation. Return only a JSON object with exactly one key named \"action\" and a single-letter A-G value. Do not put text outside the object."
+    },
+    {
+      "id": "gui_packet_high",
+      "image": "../assets/gui.png",
+      "prompt": "You are reading one screenshot from a settings interface. Inspect the visible tabs, controls, and buttons. The goal is to apply the pending settings changes. Choose one immediate action based only on the screenshot; do not invent unseen state or describe a multistep plan. Use this GUI action dictionary: A means click General, B means click Display, C means click Audio, D means click Controls, E means click Apply, F means toggle fullscreen, and G means wait. Make a single decision for the current observation. Output exactly one action letter, with no explanation, punctuation, or alternatives.",
+      "min_pixels": 65536,
+      "max_pixels": 786432,
+      "json_prompt": "You are reading one screenshot from a settings interface. Inspect the visible tabs, controls, and buttons. The goal is to apply the pending settings changes. Choose one immediate action based only on the screenshot; do not invent unseen state or describe a multistep plan. Use this GUI action dictionary: A means click General, B means click Display, C means click Audio, D means click Controls, E means click Apply, F means toggle fullscreen, and G means wait. Make a single decision for the current observation. Return only a JSON object with exactly one key named \"action\" and a single-letter A-G value. Do not put text outside the object."
+    },
+    {
+      "id": "text_short",
+      "image": null,
+      "prompt": "The task is already complete. Choose the next action. A:left B:right C:forward D:pickup E:drop F:toggle G:done. Answer with one letter.",
+      "min_pixels": 65536,
+      "max_pixels": 131072,
+      "json_prompt": "The task is already complete. Choose the next action. A:left B:right C:forward D:pickup E:drop F:toggle G:done. Return only a JSON object with exactly one key named \"action\" and a single-letter A-G value. Do not put text outside the object."
+    },
+    {
+      "id": "text_packet",
+      "image": null,
+      "prompt": "The task is complete. There is no image for this control case. Select one action from the grid interface: A means left, B means right, C means forward, D means pickup, E means drop, F means toggle, and G means done. The current state requires no additional navigation or manipulation, so choose the action that marks completion. Return exactly one letter and do not include explanation, punctuation, or any additional text.",
+      "min_pixels": 65536,
+      "max_pixels": 131072,
+      "json_prompt": "The task is complete. There is no image for this control case. Select one action from the grid interface: A means left, B means right, C means forward, D means pickup, E means drop, F means toggle, and G means done. The current state requires no additional navigation or manipulation, so choose the action that marks completion. Return only a JSON object with exactly one key named \"action\" and a single-letter A-G value. Do not put text outside the object."
+    }
+  ]
+}

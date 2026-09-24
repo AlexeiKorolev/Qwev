@@ -1,0 +1,28 @@
+{
+  "model": "Qwen/Qwen3-VL-2B-Instruct",
+  "revision": "main",
+  "local_files_only": true,
+  "dtype": "bfloat16",
+  "attention_implementation": "sdpa",
+  "device": "cuda:0",
+  "warmup": 1,
+  "repeats": 2,
+  "seed": 42,
+  "modes": [
+    "prefill",
+    "head",
+    "one_token",
+    "json"
+  ],
+  "max_new_tokens": 32,
+  "cases": [
+    {
+      "id": "grid_smoke",
+      "image": "../assets/grid.png",
+      "prompt": "In this grid scene, the agent faces right and the yellow key is the target. Choose the next action toward the key. A:left B:right C:forward D:pickup E:drop F:toggle G:done. Answer with one letter.",
+      "min_pixels": 65536,
+      "max_pixels": 131072,
+      "json_prompt": "In this grid scene, the agent faces right and the yellow key is the target. Choose the next action toward the key. A:left B:right C:forward D:pickup E:drop F:toggle G:done. Return only a JSON object with exactly one key named \"action\" and a single-letter A-G value. Do not put text outside the object."
+    }
+  ]
+}
