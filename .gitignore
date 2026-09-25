@@ -7,6 +7,5 @@ venv/
 build/
 dist/
 assets/
-results/
 slurm-*.out
 .DS_Store
